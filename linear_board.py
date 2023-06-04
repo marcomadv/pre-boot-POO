@@ -1,4 +1,5 @@
-from settings import BOARD_LENGTH
+from settings import *
+from list_utils import *
 
 class LinearBoard():
     """
@@ -28,10 +29,11 @@ class LinearBoard():
         return self._column[-1] != None
 
     def is_victory(self, char):
-        return False
+        return find_streak(self._column, char, VICTORY_STRIKE )
     
     def is_tie(self, char1, char2):
         """
         no hay victoria ni de char1 ni de char2
         """
-        return (self.is_victory('x') == False) and (self.is_vicrory('o') == False)
+        return (self.is_victory('x') == False) and (self.is_victory('o') == False)
+    
